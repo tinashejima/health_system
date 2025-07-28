@@ -1,4 +1,4 @@
-package handleException;
+package com.health_project.server.handleException;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

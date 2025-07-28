@@ -1,8 +1,8 @@
-package dto;
+package com.health_project.server.dto;
 
 
 import lombok.Data;
-import jakarta.validation.constraints.*;
+
 import java.time.LocalDate;
 @Data
 public class PatientRegistrationDto {
