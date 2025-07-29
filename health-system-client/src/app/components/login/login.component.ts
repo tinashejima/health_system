@@ -51,7 +51,7 @@ export class LoginComponent {
             console.log("Dashboard res:"+dashboardres.response);
 
             this.router.navigateByUrl('dashboard');
-          }, error : (err: any) => {
+          }, error : (err) => {
             console.log("Dashboard error received :" + err); 
             this.storage.remove('auth-key');
           }

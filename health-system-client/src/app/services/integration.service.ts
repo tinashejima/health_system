@@ -16,7 +16,7 @@ export class IntegrationService {
   constructor(private http: HttpClient) { }
 
   doLogin(request:LoginRequest):Observable<LoginRequest>{
-    return this.http.post<LoginRequest>(API_URL + "/doLogin", request);
+    return this.http.post<LoginRequest>(API_URL + "/login", request);
   }
   dashboard(): Observable<any> {
     return this.http.get<any>(API_URL + "/dashboard");

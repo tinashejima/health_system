@@ -22,17 +22,14 @@ public class UserEntity {
     @Column(name = "password", nullable = false)
     private String password;
 
+    public UserEntity() {
+    }
+
 
     public UserEntity(String username, String password) {
         this.username = username;
         this.password = password;
 
-    }
-
-    public UserEntity(String id, String username, String password) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
     }
 
     // --- Getters ---
