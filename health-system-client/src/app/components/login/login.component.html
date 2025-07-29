@@ -1,39 +1,99 @@
-<div class="parent">
-    <div class="container">
+<!-- login.component.html -->
+<div class="login-container">
+  <div class="login-content">
+    <!-- Left Panel -->
+    <div class="welcome-panel">
+      <div class="logo-container">
+        <div class="logo">
+          <span class="logo-text">mpilo</span>
+          <div class="logo-icon">🏥</div>
+        </div>
+      </div>
+      
+      <div class="welcome-content">
+        <h1 class="welcome-title">Welcome to Impilo – Zimbabwe's Digital Health Platform</h1>
+        <p class="welcome-subtitle">
+          Revolutionizing health data management to promote equitable, 
+          affordable, and universal access to healthcare
+        </p>
+        
+        <div class="features-list">
+          <h3>Key Features</h3>
+          <div class="feature-item">
+            <span class="checkmark">✓</span>
+            <span>Comprehensive patient management</span>
+          </div>
+          <div class="feature-item">
+            <span class="checkmark">✓</span>
+            <span>Laboratory integration and results tracking</span>
+          </div>
+          <div class="feature-item">
+            <span class="checkmark">✓</span>
+            <span>Appointment scheduling and reminders</span>
+          </div>
+          <div class="feature-item">
+            <span class="checkmark">✓</span>
+            <span>Electronic health records management</span>
+          </div>
+          <div class="feature-item">
+            <span class="checkmark">✓</span>
+            <span>Analytics and reporting dashboard</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="signin-panel">
+      <div class="signin-form">
+        <h1 class="signin-title">Login</h1>
+        <p class="signin-subtitle">Access your account to continue</p>
+        
         <form [formGroup]="userForm">
-            <h1>Login</h1>
-            <div class="input-box">
-                <input type="email" formControlName="username" placeholder="username">
-                <i class='bx bx-envelope'></i>
-
-                <div class="text-danger">
-                @if (userForm.controls['username'].touched && userForm.controls['username'].errors?.['required']) {
+          <div class="form-group">
+            <div class="input-container">
+              <input 
+                type="email" 
+                formControlName="username" 
+                placeholder="username">
+              <i class='bx bx-envelope'></i>
+            </div>
+            <div class="text-danger">
+              @if (userForm.controls['username'].touched && userForm.controls['username'].errors?.['required']) {
                 <span>This is required</span>
-                }
+              }
             </div>
+          </div>
 
-            <div class="input-box">
-                <input type="password" formControlName="password" placeholder="Password">
-                <i class='bx bx-lock-alt'></i>
-
-                <div class="text-danger">
-                    @if (userForm.controls['password'].touched && userForm.controls['password'].errors?.['minlength']) {
-                    <span>This is required</span>
-                    }
+          <div class="form-group">
+            <div class="input-container">
+              <input 
+                type="password" 
+                formControlName="password" 
+                placeholder="Password">
+              <i class='bx bx-lock-alt'></i>
             </div>
+            <div class="text-danger">
+              @if (userForm.controls['password'].touched && userForm.controls['password'].errors?.['minlength']) {
+                <span>This is required</span>
+              }
             </div>
+          </div>
 
+          <div class="remember">
+            <label for="#">
+              <input type="checkbox"> Remember me
+            </label>
+            <a href="#">Forgot password?</a>
+          </div>
+
+          <button class="btn" (click)="login()">Login</button>
+
+          <div class="register">
+            <p>Don't have an account? <br> <a routerLink="/register">Register</a></p>
+          </div>
+        </form>
+      </div>
     </div>
-    <div class="remember">
-        <label for="#">
-            <input type="checkbox"> Remember me
-        </label>
-        <a href="#">Forgot password?</a>
-    </div>
-    <button class="btn" (click)="login()">Login</button>
-    <div class="register">
-        <p>Don't have an account? <br> <a routerLink="/register">Register</a></p>
-    </div>
-    </form>
-</div>
+  </div>
 </div>
