@@ -18,12 +18,13 @@ export class IntegrationService {
   doLogin(request:LoginRequest):Observable<LoginRequest>{
     return this.http.post<LoginRequest>(API_URL + "/login", request);
   }
-  dashboard(): Observable<any> {
-    return this.http.get<any>(API_URL + "/dashboard");
+  home(): Observable<any> {
+    return this.http.get<any>(API_URL + "/home");
   }
-
-  // doRegister(request: SignupRequest):Observable<SignupResponse> {
-  //   return this.http.post<SignupResponse>(API_URL + "/doRegister", request);
-  // }
-  
 }
+//   // doRegister(request: SignupRequest):Observable<SignupResponse> {
+//   //   return this.http.post<SignupResponse>(API_URL + "/doRegister", request);
+//   // }
+  
+// }
+

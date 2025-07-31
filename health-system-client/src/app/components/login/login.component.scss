@@ -25,14 +25,14 @@
   background: linear-gradient(135deg, #2abce0 0%, #1a7379 100%);
   padding: 60px 50px;
   color: white;
-  position: relative;
+  position: centre;
   
   &::before {
     content: '';
     position: absolute;
     top: 0;
     right: 0;
-    width: 200px;
+    width: 1200px;
     height: 200px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
@@ -155,7 +155,7 @@
 }
 
 .signin-form {
-  width: 100%;
+  width: 40%;
 }
 
 .signin-title {

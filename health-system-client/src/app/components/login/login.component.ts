@@ -46,13 +46,13 @@ export class LoginComponent {
 
         this.storage.set('auth-key', res.token);
 
-        this.integration.dashboard().subscribe({
-          next: (dashboardres:any) => {
-            console.log("Dashboard res:"+dashboardres.response);
+        this.integration.home().subscribe({
+          next: (homeres:any) => {
+            console.log("Home res:"+homeres.response);
 
-            this.router.navigateByUrl('dashboard');
+            this.router.navigateByUrl('home');
           }, error : (err) => {
-            console.log("Dashboard error received :" + err); 
+            console.log("Home error received :" + err);
             this.storage.remove('auth-key');
           }
         });
@@ -63,7 +63,6 @@ export class LoginComponent {
     });
   
 }}
-
 
 
 
