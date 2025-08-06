@@ -22,9 +22,8 @@ export class IntegrationService {
     return this.http.get<any>(API_URL + "/home");
   }
 }
-//   // doRegister(request: SignupRequest):Observable<SignupResponse> {
-//   //   return this.http.post<SignupResponse>(API_URL + "/doRegister", request);
-//   // }
+  // doRegister(request: SignupRequest):Observable<SignupResponse> {
+  //   return this.http.post<SignupResponse>(API_URL + "/doRegister", request);
+  // }
   
-// }
 

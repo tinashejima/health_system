@@ -19,6 +19,7 @@ cd /home/tynash/My-Projects/health_system/server && mvn clean install;
  cd /home/tynash/My-Projects/health_system/server && mvn clean install -DskipTests
 
 
+cd /home/tynash/My-Projects/health_system/server && mvn clean install;
 cd /home/tynash/My-Projects/health_system/server && mvn spring-boot:run
 
 
