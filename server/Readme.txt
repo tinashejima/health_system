@@ -2,7 +2,7 @@
 
 sdk use java 17.0.15-zulu
 
-
+docker rm -v -f $(docker ps -qa)
 
 cd /home/tynash/My-Projects/health_system/server && docker-compose down
 
