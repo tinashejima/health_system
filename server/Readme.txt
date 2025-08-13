@@ -22,6 +22,15 @@ cd /home/tynash/My-Projects/health_system/server && mvn clean install;
 cd /home/tynash/My-Projects/health_system/server && mvn clean install;
 cd /home/tynash/My-Projects/health_system/server && mvn spring-boot:run
 
+=====RUN ALL COMMANDS===================
+
+sdk use java 17.0.15-zulu
+docker rm -v -f $(docker ps -qa)
+cd /home/tynash/My-Projects/health_system/server && docker-compose down
+cd /home/tynash/My-Projects/health_system/server && docker-compose up -d
+cd /home/tynash/My-Projects/health_system/server && mvn clean install;
+cd /home/tynash/My-Projects/health_system/server && mvn spring-boot:run
+
 
 docker volume rm mysql_data
 

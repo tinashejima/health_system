@@ -1,5 +1,6 @@
 package com.health_project.server.controllers; // Assuming this is your package structure
 
+import com.health_project.server.dto.HomeResponseDto;
 import com.health_project.server.dto.LoginRegRequestDto;
 import com.health_project.server.dto.LoginRequestDto;
 import com.health_project.server.entities.UserEntity;
@@ -7,10 +8,7 @@ import com.health_project.server.services.AuthService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 import java.util.Optional;
@@ -52,6 +50,18 @@ public class AuthController {
             // Authentication failed (invalid credentials)
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("error", "Invalid username or password."));
         }
+    }
+
+
+
+    @GetMapping("/home")
+    public ResponseEntity<HomeResponseDto> home() {
+        HomeResponseDto response = new HomeResponseDto();
+        response.setResponse("Success");
+
+        System.out.println("Home Response");
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
 }
