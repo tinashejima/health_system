@@ -52,7 +52,7 @@ public class AuthController {
     @GetMapping("/home")
     public ResponseEntity<HomeResponseDto> home() {
         HomeResponseDto response = new HomeResponseDto();
-        response.setResponse("Success");
+        response.setResponse("Welcome to the home page!");
 
         System.out.println("Home Response");
 
