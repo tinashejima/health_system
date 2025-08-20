@@ -1,11 +1,8 @@
 package com.health_project.server.entities;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Table;
-import jakarta.persistence.Column;
+import jakarta.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -21,6 +18,14 @@ public class UserEntity {
 
     @Column(name = "password", nullable = false)
     private String password;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<RoleEntity> roles = new HashSet<>();
 
     public UserEntity() {
     }
@@ -46,6 +51,10 @@ public class UserEntity {
         return password;
     }
 
+    public Set<RoleEntity> getRoles() {
+        return roles;
+    }
+
     // --- Setters ---
 
     public void setId(String id) {
@@ -57,6 +66,10 @@ public class UserEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setRoles(Set<RoleEntity> roles) {
+        this.roles = roles;
     }
 
     // --- Utility Methods ---
@@ -82,10 +95,10 @@ public class UserEntity {
     @Override
     public String toString() {
         return "UserEntity{" + // Class name in toString changed
-                "id='" + id + '\'' +
-                ", username='" + username + '\'' +
+                "id='" + id + "'" +
+                ", username='" + username + "'" +
 
-                '}';
+                "}";
     }
 
 
@@ -93,3 +106,4 @@ public class UserEntity {
         return this.password != null && this.password.equals(inputPassword);
     }
 }
+
