@@ -6,7 +6,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "users")
-public class UserEntity {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -19,19 +19,19 @@ public class UserEntity {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(
             name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
-    private Set<RoleEntity> roles = new HashSet<>();
+    private Set<Role> roles = new HashSet<>();
 
-    public UserEntity() {
+    public User() {
     }
 
 
-    public UserEntity(String username, String password) {
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
 
@@ -51,7 +51,7 @@ public class UserEntity {
         return password;
     }
 
-    public Set<RoleEntity> getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
 
@@ -68,7 +68,7 @@ public class UserEntity {
         this.password = password;
     }
 
-    public void setRoles(Set<RoleEntity> roles) {
+    public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
 
@@ -78,7 +78,7 @@ public class UserEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UserEntity user = (UserEntity) o;
+        User user = (User) o;
         if (id != null) {
             return Objects.equals(id, user.id);
         } else {

@@ -3,7 +3,7 @@ package com.health_project.server.services;
 
 import com.health_project.server.dto.PatientRegistrationDto;
 import com.health_project.server.dto.PatientResponseDto;
-import com.health_project.server.entities.PatientEntity;
+import com.health_project.server.entities.Patient;
 import com.health_project.server.handleException.DuplicatePatientException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -37,7 +37,7 @@ public class PatientServiceImpl implements PatientService {
         }
 
         // Create a new entity instead of using modelMapper directly
-        PatientEntity patient = new PatientEntity();
+        Patient patient = new Patient();
         // Manually set the fields
         patient.setFirstName(registrationDto.getFirstName());
         patient.setLastName(registrationDto.getLastName());
@@ -51,7 +51,7 @@ public class PatientServiceImpl implements PatientService {
 
 
         // Save to database
-        PatientEntity savedPatient = patientRepository.save(patient);
+        Patient savedPatient = patientRepository.save(patient);
 
         // Map entity to response DTO
         PatientResponseDto responseDto = modelMapper.map(savedPatient, PatientResponseDto.class);
@@ -63,7 +63,7 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public PatientResponseDto getPatientByPatientId(String patientId) {
-        PatientEntity patient = patientRepository.findByPatientId(patientId)
+        Patient patient = patientRepository.findByPatientId(patientId)
             .orElseThrow(() -> new ResponseStatusException(
                 HttpStatus.NOT_FOUND,
                 "Patient not found with ID: " + patientId
