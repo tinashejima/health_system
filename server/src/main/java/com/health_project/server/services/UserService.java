@@ -29,11 +29,11 @@ public class UserService implements UserDetailsService {
         this.roleRepository = roleRepository;
     }
 
-    public User registerUser(String username, String password) {
-        return registerUser(username, password, new HashSet<>()); // Call the overloaded method with empty roles
+    public User registerUser(String username, String password, String email) {
+        return registerUser(username, password, email, new HashSet<>()); // Call the overloaded method with empty roles
     }
 
-    public User registerUser(String username, String password, Set<String> roles) {
+    public User registerUser(String username, String password, String email, Set<String> roles) {
         if (username == null || username.trim().isEmpty() || password == null || password.isEmpty()) {
             throw new IllegalArgumentException("Username and password cannot be empty.");
         }
@@ -41,7 +41,7 @@ public class UserService implements UserDetailsService {
             throw new IllegalArgumentException("Username '" + username + "' already exists. Please choose another.");
         }
 
-        User newUser = new User(username, passwordEncoder.encode(password));
+        User newUser = new User(username, passwordEncoder.encode(password), email);
 
         Set<Role> userRoles = new HashSet<>();
         if (roles == null || roles.isEmpty()) {

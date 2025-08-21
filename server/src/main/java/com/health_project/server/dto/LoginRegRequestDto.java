@@ -13,14 +13,19 @@ public class LoginRegRequestDto {
     @Size(min = 6, message = "Password must be at least 6 characters long")
     private String password;
 
+    @NotBlank(message = "Email cannot be empty")
+    @Size(min = 3, max = 50, message = "Email must be between 3 and 50 characters")
+    private String email;
+
     // Default constructor (required for Spring's @RequestBody)
     public LoginRegRequestDto() {
     }
 
     // Constructor with fields
-    public LoginRegRequestDto(String username, String password) {
+    public LoginRegRequestDto(String username, String password, String email) {
         this.username = username;
         this.password = password;
+        this.email = email;
     }
 
     // Getters
@@ -32,6 +37,10 @@ public class LoginRegRequestDto {
         return password;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     // Setters
     public void setUsername(String username) {
         this.username = username;
@@ -39,5 +48,9 @@ public class LoginRegRequestDto {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

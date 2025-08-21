@@ -24,8 +24,8 @@ public class AuthService {
         this.authenticationManager = authenticationManager;
     }
 
-    public User register(String username, String password) {
-        return userService.registerUser(username, password, new HashSet<>());
+    public User register(String username, String password, String email) {
+        return userService.registerUser(username, password, email, new HashSet<>());
     }
 
     public Optional<String> authenticate(String username, String password) {

@@ -35,7 +35,7 @@ export class LoginComponent {
   message: string = '';
   isError: boolean = false;
 
-     login() {
+ login() {
  this.storage.remove('auth-key');
  const formValue = this.userForm.value;
 

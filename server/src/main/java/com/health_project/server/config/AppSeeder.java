@@ -40,7 +40,7 @@ public class AppSeeder implements CommandLineRunner {
         try {
             Set<String> adminRoles = new HashSet<>();
             adminRoles.add("ADMIN");
-            userService.registerUser("admin@clinic.co.zw", "Password1", adminRoles);
+            userService.registerUser("admin@clinic.co.zw", "Password1", "admin@gmail.com",adminRoles);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
